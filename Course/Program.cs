@@ -2,16 +2,21 @@
 using Course.Entities;
 using Course.Entities.Exceptions;
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
-            try {
+            try
+            {
                 Console.Write("Room number: ");
                 int number = int.Parse(Console.ReadLine());
-                Console.Write("Check-in date (dd/MM/yyyy): ");
+                Console.Write("Check-in date (MM/dd/yy): ");
                 DateTime checkIn = DateTime.Parse(Console.ReadLine());
-                Console.Write("Check-out date (dd/MM/yyyy): ");
+
+                Console.Write("Check-out date (MM/dd/yy): ");
                 DateTime checkOut = DateTime.Parse(Console.ReadLine());
 
                 Reservation reservation = new Reservation(number, checkIn, checkOut);
@@ -22,18 +27,22 @@ namespace Course {
                 Console.Write("Check-in date (dd/MM/yyyy): ");
                 checkIn = DateTime.Parse(Console.ReadLine());
                 Console.Write("Check-out date (dd/MM/yyyy): ");
+
                 checkOut = DateTime.Parse(Console.ReadLine());
 
                 reservation.UpdateDates(checkIn, checkOut);
                 Console.WriteLine("Reservation: " + reservation);
             }
-            catch (FormatException e) {
+            catch (FormatException e)
+            {
                 Console.WriteLine("Error in format: " + e.Message);
             }
-            catch (DomainException e) {
+            catch (DomainException e)
+            {
                 Console.WriteLine("Error in reservation: " + e.Message);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 Console.WriteLine("Unexpected error: " + e.Message);
             }
         }
